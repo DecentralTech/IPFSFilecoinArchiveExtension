@@ -1,40 +1,49 @@
 'use strict';
  
-chrome.browserAction.onClicked.addListener(tab => chrome.pageCapture.saveAsMHTML({
-  tabId: tab.id
-}, bin => {
-  const blob = new Blob([bin], {
-    type: 'plain/mhtml',
-    filename: tab.title,
-    extension: 'mhtml'
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.storage.sync.set({color: '#3aa757'}, function() {
+    console.log("The color is green.");
   });
+});
 
-  const ipfsaddurl = "http://127.0.0.1:5001/api/v0/add";
-
-  var ipfsadd = new XMLHttpRequest();
-  ipfsadd.open("POST", ipfsaddurl, true);
-
-  ipfsadd.onreadystatechange = function() {//Call a function when the state changes.
-      if(ipfsadd.readyState == 4 && ipfsadd.status == 200) {
-          console.log(ipfsadd);
-          
-          const ipfscpurl = encodeURI("http://127.0.0.1:5001/api/v0/files/cp?arg=/ipfs/"+JSON.parse(ipfsadd.responseText).Hash+"&arg=/"+tab.title+".mhtml");
-          var ipfscp = new XMLHttpRequest();
-          ipfscp.open("POST", ipfscpurl, true);
-          ipfscp.onreadystatechange = function() {//Call a function when the state changes.
-              if(ipfscp.readyState == 4 && ipfscp.status == 200) {
-                  console.log(ipfscp.responseText);
-              }
-          }
-          ipfscp.send();
-
-      }
-  }
-  var formData = new FormData();
-  formData.append("file", blob, tab.title);
-  ipfsadd.send(formData);
+// chrome.browserAction.onClicked.addListener(
   
-}))
+//   tab => chrome.pageCapture.saveAsMHTML
+//   (
+//     {tabId: tab.id}, 
+//     bin => {
+//   const blob = new Blob([bin], {
+//     type: 'plain/mhtml',
+//     filename: tab.title,
+//     extension: 'mhtml'
+//   });
+
+//   const ipfsaddurl = "http://127.0.0.1:5001/api/v0/add";
+
+//   var ipfsadd = new XMLHttpRequest();
+//   ipfsadd.open("POST", ipfsaddurl, true);
+
+//   ipfsadd.onreadystatechange = function() {//Call a function when the state changes.
+//       if(ipfsadd.readyState == 4 && ipfsadd.status == 200) {
+//           console.log(ipfsadd);
+          
+//           const ipfscpurl = encodeURI("http://127.0.0.1:5001/api/v0/files/cp?arg=/ipfs/"+JSON.parse(ipfsadd.responseText).Hash+"&arg=/"+tab.title+".mhtml");
+//           var ipfscp = new XMLHttpRequest();
+//           ipfscp.open("POST", ipfscpurl, true);
+//           ipfscp.onreadystatechange = function() {//Call a function when the state changes.
+//               if(ipfscp.readyState == 4 && ipfscp.status == 200) {
+//                   console.log(ipfscp.responseText);
+//               }
+//           }
+//           ipfscp.send();
+
+//       }
+//   }
+//   var formData = new FormData();
+//   formData.append("file", blob, tab.title);
+//   ipfsadd.send(formData);
+  
+// }))
 
   // chrome.storage.local.get({
   //   'notify': true,

@@ -4,40 +4,36 @@
   "name": "Save as IPFS",
   "description": "Save active tab as MHTML web page archive file format with a single click",
   "background": {
-    "scripts": [
-      "background.js"
-  ]},
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "permissions": [
     "storage",
     "pageCapture",
     "activeTab",
     "downloads",
-    "notifications",
-    "<all_urls>",
-    "webRequest",
-    "webRequestBlocking"
+    "notifications"
   ],
-  "homepage_url": "https://add0n.com/save-as-mhtml.html",
   "icons": {
-    "16": "data/icons/16.png",
-    "19": "data/icons/19.png",
-    "32": "data/icons/32.png",
-    "38": "data/icons/38.png",
-    "48": "data/icons/48.png",
-    "64": "data/icons/64.png",
-    "128": "data/icons/128.png",
-    "256": "data/icons/256.png",
-    "512": "data/icons/512.png"
+    "16": "data/icons/logo.png",
+    "19": "data/icons/logo.png",
+    "32": "data/icons/logo.png",
+    "38": "data/icons/logo.png",
+    "48": "data/icons/logo.png",
+    "64": "data/icons/logo.png",
+    "128": "data/icons/logo.png",
+    "256": "data/icons/logo.png",
+    "512": "data/icons/logo.png"
   },
-  "page_action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "data/icons/16.png",
-      "19": "data/icons/19.png",
-      "32": "data/icons/32.png",
-      "38": "data/icons/38.png",
-      "48": "data/icons/48.png",
-      "64": "data/icons/64.png"
+      "16": "data/icons/logo.png",
+      "19": "data/icons/logo.png",
+      "32": "data/icons/logo.png",
+      "38": "data/icons/logo.png",
+      "48": "data/icons/logo.png",
+      "64": "data/icons/logo.png"
     }
   },
   "options_ui": {

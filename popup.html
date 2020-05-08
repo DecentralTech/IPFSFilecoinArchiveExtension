@@ -1,17 +1,138 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="toFilecoin">Archive this site to Filecoin</button>
 
-    <script src="popup.js"></script>
-  </body>
+<head>
+	<style>
+		html,
+		body {
+			height: 400px;
+			width: 320px;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+		#home {
+			width: 260px;
+			margin: 20px auto;
+		}
+		#success {
+			width: 260px;
+			margin: 20px auto;
+		}
+		#failed {
+			width: 260px;
+			margin: 20px auto;
+		}
+		.logo {text-align: center; clear: both;}
+		.logo img {width:100px;}
+		.title {
+			font-size: 18px;
+			color: #070f1d;
+			text-align: center;
+		}
+		.ico-options {
+			float: right;
+		}
+		.apis {font-size: 12px;margin: 16px 0 32px;}
+		.apis .api {
+			margin: 24px 0;
+			clear: both;
+			line-height: 24px;
+		}
+		.apis .apilabel {
+			float: left;
+			color: #9da2a5;
+		}
+		.apis .apiaddress {
+			float: right;
+			color: #070f1d;
+		}
+		.desctext {
+			width:260px;
+			text-align: center;
+			margin: 12px auto;
+			font-size: 12px;
+			color: #9da2a5;
+			overflow-wrap: break-word;
+		}
+		.button {
+			clear: both;
+			font-size: 12px;
+			height: 32px;
+			width: 125px;
+			outline: none;
+			text-align: center;
+			border-radius: 16px;
+			border: 1px solid #55d4dc;
+			color: #55d4dc;
+			font-weight: 600;
+			margin-bottom: 12px;
+			cursor: pointer;
+		}
+		.button-colored {
+			background-color: #55d4dc;
+			color: #FFFFFF;
+		}
+		.button-long {
+			width: 260px;
+		}
+		.button-left {
+			margin-right: 10px;
+		}
+		#qrcode {
+			width: 128px;
+			height: 128px;
+			margin: 0 auto;
+		}
+		#qrcode img{
+			width: 128px;
+			height: 128px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="home">
+		<div class="ico-options"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				width="27" height="27" viewBox="0 0 27 27">
+				<image width="27" height="27"
+					xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAADCUlEQVRIiZ3WW6jlcxQH8M/ZTsd4cYt5wLgW0+gYgwd3R0ke8ECHlxn3mRLllsgpDxLyQCIlBzOjMC4p5EkmRi6jOKPDaBoxeCJyeRiGQUvfv7bd/u89e1btdvv322t9f7+1vuu7fmPT81sNsAlchGksxjLs6Pr7AnyCj/A8XsGfbeE6LetjWIk6ybM4Gktwb5fPOB7CUZjES/gcl8V/JLA78DtOTLAZ3IwteDkHWYVbcSxOTryZUW/2F97BT0lR2T2YwgbsjTdxGh7I/gf4Oft/9ws63nYKHI7vetbeyqfNfsCRw27W6cnzCpyOFwYE7mfrcDYu6doba2I3YNfgM8wmPWtTl7Ujgj2F1wP6Bh5PjVf8izo9v3UixS4y/IIf8RxWY+eIYGV75PB1u32wX2q4eDyLi3A8Nu1G8F6rAz6Wj7D0PVxYYJeGcbsCdByuyOG2JW2fDvF5H5vrUp30SN3qhiFO1+NjLMeBuDLqcfUQv9uiPks7UYYixoO5cj9bFrVYnVtVvx2CZ5KuJS1+Z+E+PNyA/Ybr8G1O289Kgr7HtSFS2fYoSJHq8ha/q/AFbipNbahf4jmPw1qcjkhr7OhZ3571RS1+h2IuivQ/UZ1M0fvZl6ntRM/eXknhNy1+21KCTgNWDo/iYDzR4rQGB6Q+C7qAZqOTa1r8nox8Vb33HA91K303YmOL01zY+AjOT+omA7Qyv/vZ27g9o+mcUpBXcVBGyTCbDBmKiV+HnW1A3VZ9tqnAqm+eTm7ndsFxVDsF7+Libm0spv0abVyX+u2uNq7KU6K0cd9GGzsBuTvfG7NRRHhxwHBts+LAayHczshgtdVd9d0Mz9mMg2bCNqldPuKYKbKcF3FvZuF/c3LQ62pDngUXjAC2Hn/g3H6bg9JUDbmwZ20qPbU+TDyjZ39/fNUWsA2sk0A1+E7K2kxATg2JptJHt2S/WFd9d+aoT7mq3Z3Z/zCNXySql9QxReMoQxHh/vRa0btIUa+wvjbsRVwEqhdxFbxATkhNGivpqhlXg3fwixj/AN9evBweqhXCAAAAAElFTkSuQmCC" />
+			</svg>
+		</div>
+		<div class="logo"><img src="data/icons/logo.png"></div>
+		<div class="title">Archive Website<br>to Filecoin</div>
+		<div class="apis">
+			<div class="api"><span class="apilabel">IPFS API</span><span class="apiaddress">http://localhost:5001</span>
+			</div>
+			<div class="api"><span class="apilabel">Filecoin API</span><span
+					class="apiaddress">http://localhost:1234</span></div>
+		</div>
+
+		<button id="toFilecoin" class="button button-long button-colored">Archive this site to Filecoin</button>
+		<button id="toIPFS" class="button button-left">Archive to IPFS</button><button id="viewFile"
+			class="button button-right">Open WebUI</button>
+
+	</div>
+
+	<div id="success" style="display: none;">
+		<div class="logo"><img src="data/icons/success.png"></div>
+		<div class="title">Success!</div>
+		<div id="successDesc" class="desctext"></div>
+		<button id="copyHash" class="button button-left button-colored">Copy Hash</button><button id="successBH" class="button button-right">Open WebUI</button>
+		<div id="qrcode"></div>
+	</div>
+
+	<div id="failed" style="display: none;">
+		<div class="logo"><img src="data/icons/failed.png"></div>
+		<div class="title">Failed!</div>
+		<div id="failedDesc" class="desctext"></div>
+		<button id="failedBH" class="button button-left button-colored">Back</button>
+		<button id="retryIPFS" class="button button-right">Retry</button>
+	</div>
+
+	<script src="popup.js"></script>
+	<script src="qrcode.min.js"></script>
+</body>
+
 </html>
