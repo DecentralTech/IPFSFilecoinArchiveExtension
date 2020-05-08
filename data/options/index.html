@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Save as MHTML :: Options Page</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <table>
+    <colgroup>
+      <col width="32">
+      <col>
+    </colgroup>
+    <tr>
+      <td><input type="checkbox" id="notify"></td>
+      <td>
+        <label for="notify">Display desktop notifications</label>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="saveAs"></td>
+      <td>
+        <label for="saveAs">Display the file-chooser to allow the user to select the file location</label>
+      </td>
+    </tr>
+  </table>
+
+  <div id="explore"></div>
+  <p>
+    <input type="button" id="reset" value="Reset">
+    <input type="button" id="support" value="Support Development"> - <input type="button" id="save" value="Save">
+    <span id="toast"></span>
+  </p>
+  <script type="text/javascript" src="index.js"></script>
+  <script async type="text/javascript" src="matched.js"></script>
+</body>
+</html>
